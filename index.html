@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hemakshi Portfolio</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- 🔝 NAVBAR -->
+<nav class="navbar">
+  <h2>Hemakshi</h2>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- 🔥 HERO -->
+<section class="hero">
+  <div class="hero-container">
+
+    <div class="hero-text animate-fade-up">
+      <h2>Hey there,</h2>
+      <h1>I'm <span>Hemakshi Yeole</span></h1>
+      <p>Aspiring Data Analyst | ML Enthusiast</p>
+
+      <div class="buttons">
+        <button class="btn-primary">View Projects</button>
+        <button class="btn-outline">Download Resume</button>
+      </div>
+    </div>
+
+    <div class="hero-image animate-fade-in">
+      <div class="image-box">
+        <img src="profilPic.jpeg">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 🧩 SKILLS -->
+<section id="skills" class="section">
+  <h2>Skills</h2>
+
+  <div class="grid">
+    <div class="card">Python</div>
+    <div class="card">SQL</div>
+    <div class="card">Power BI</div>
+    <div class="card">Machine Learning</div>
+    <div class="card">NLP</div>
+    <div class="card">Data Visualization</div>
+  </div>
+</section>
+
+<!-- 💼 PROJECTS -->
+<section id="projects" class="section">
+  <h2>Projects</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Bounce Rate Analysis</h3>
+      <p>Analyzed user engagement and behavior.</p>
+    </div>
+
+    <div class="card">
+      <h3>NLP WordNet</h3>
+      <p>Synonyms & antonyms using NLP.</p>
+    </div>
+
+    <div class="card">
+      <h3>ML Models</h3>
+      <p>Classification, regression, clustering.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- 🔄 WORKFLOW -->
+<section class="section">
+  <h2>My Workflow</h2>
+
+  <div class="grid">
+    <div class="card">Data Collection</div>
+    <div class="card">Data Cleaning</div>
+    <div class="card">Analysis</div>
+    <div class="card">Visualization</div>
+  </div>
+</section>
+
+<!-- 📩 CONTACT -->
+<section id="contact" class="section contact">
+  <h2>Contact Me</h2>
+  <p>Let's work together!</p>
+
+  <input type="email" placeholder="Enter your email">
+  <button class="btn-primary">Send</button>
+</section>
+
+<!-- 🔻 FOOTER -->
+<footer>
+  © 2026 Hemashi Portfolio
+</footer>
+<script>
+document.querySelectorAll(".skill-card").forEach(card => {
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    card.style.setProperty("--x", x + "px");
+    card.style.setProperty("--y", y + "px");
+  });
+});
+</script>
+</body>
+</html>
