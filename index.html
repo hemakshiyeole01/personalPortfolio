@@ -24,8 +24,8 @@
 
 <!-- 🔥 HERO -->
 <section class="hero">
+  <div class="hero-bg"></div>
   <div class="hero-container">
-
     <div class="hero-text animate-fade-up">
       <h2>Hey there,</h2>
       <h1>I'm <span>Hemakshi Yeole</span></h1>
@@ -50,14 +50,46 @@
 <section id="skills" class="section">
   <h2>Skills</h2>
 
-  <div class="grid">
-    <div class="card">Python</div>
-    <div class="card">SQL</div>
-    <div class="card">Power BI</div>
-    <div class="card">Machine Learning</div>
-    <div class="card">NLP</div>
-    <div class="card">Data Visualization</div>
+  <!-- ROW 1 (Right → Left) -->
+  <div class="marquee">
+    <div class="marquee-content">
+
+      <div class="skill-card">Python</div>
+      <div class="skill-card">SQL</div>
+      <div class="skill-card">Power BI</div>
+      <div class="skill-card">Machine Learning</div>
+      <div class="skill-card">NLP</div>
+
+      <!-- duplicate for seamless loop -->
+      <div class="skill-card">Python</div>
+      <div class="skill-card">SQL</div>
+      <div class="skill-card">Power BI</div>
+      <div class="skill-card">Machine Learning</div>
+      <div class="skill-card">NLP</div>
+
+    </div>
   </div>
+
+  <!-- ROW 2 (Left → Right) -->
+  <div class="marquee reverse">
+    <div class="marquee-content">
+
+      <div class="skill-card">Data Visualization</div>
+      <div class="skill-card">Excel</div>
+      <div class="skill-card">Pandas</div>
+      <div class="skill-card">NumPy</div>
+      <div class="skill-card">Statistics</div>
+
+      <!-- duplicate -->
+      <div class="skill-card">Data Visualization</div>
+      <div class="skill-card">Excel</div>
+      <div class="skill-card">Pandas</div>
+      <div class="skill-card">NumPy</div>
+      <div class="skill-card">Statistics</div>
+
+    </div>
+  </div>
+
 </section>
 
 <!-- 💼 PROJECTS -->
@@ -107,19 +139,8 @@
 
 <!-- 🔻 FOOTER -->
 <footer>
-  © 2026 Hemashi Portfolio
+  © 2026 Hemakshi Portfolio
 </footer>
-<script>
-document.querySelectorAll(".skill-card").forEach(card => {
-  card.addEventListener("mousemove", (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    card.style.setProperty("--x", x + "px");
-    card.style.setProperty("--y", y + "px");
-  });
-});
-</script>
+<script src="script.js"></script>
 </body>
 </html>
