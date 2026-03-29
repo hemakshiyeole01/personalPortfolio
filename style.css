@@ -138,6 +138,39 @@ body {
   height: 100%;
   object-fit: cover;
 }
+
+.section h2 {
+  font-size: 52px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 70px;
+  letter-spacing: -0.5px;
+
+  background: linear-gradient(
+    90deg,
+    #ffffff 20%,
+    #c4b5fd 60%,   /* soft violet */
+    #a78bfa 100%   /* muted purple */
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.section h2 {
+  animation: fadeUp 0.8s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* 🎯 MARQUEE CONTAINER */
 .marquee {
   overflow: hidden;
@@ -148,13 +181,23 @@ body {
 /* 🎯 MOVING CONTENT */
 .marquee-content {
   display: flex;
-  gap: 20px;
-  animation: scrollLeft 20s linear infinite;
+  gap: 30px;
+  width: max-content; 
+  animation: scrollLeft 40s linear infinite;
 }
 
 /* 🔁 REVERSE DIRECTION */
 .marquee.reverse .marquee-content {
-  animation: scrollRight 20s linear infinite;
+  animation: scrollRight 40s linear infinite;
+  width: max-content; 
+}
+
+.marquee:first-of-type {
+  margin-bottom: 25px;
+}
+
+.marquee:last-of-type {
+  margin-top: 25px;
 }
 
 /* ⬅️ RIGHT → LEFT */
@@ -178,21 +221,39 @@ body {
 }
 
 /* 🧊 SKILL CARDS */
-.skill-card {
-  min-width: 180px;
-  padding: 15px 25px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(200,200,200,0.3);
-  text-align: center;
-  transition: 0.3s ease;
-  position: relative;
-  cursor: pointer;
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
 }
 
-/* 🔥 HOVER EFFECT (SUBTLE) */
+.skill-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 16px 28px;  
+  border-radius: 14px;
+
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(10px);
+
+  transition: 0.3s ease;
+}
+
+.skill-card img {
+  width: 22px;
+  height: 22px;
+}
+
+.skill-card span {
+  font-size: 14px;
+}
+
 .skill-card:hover {
-  transform: translateY(-5px) scale(1.03);
+  transform: translateY(-4px) scale(1.05);
+  background: rgba(255,255,255,0.1);
 }
 
 /* 🌫️ FAINT GREY GLOW */
@@ -214,6 +275,49 @@ body {
   opacity: 1;
 }
 
+#skills {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 🌫️ SUBTLE FLOW BACKGROUND */
+#skills::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background: linear-gradient(
+    120deg,
+    rgba(168,85,247,0.05),
+    rgba(99,102,241,0.05),
+    rgba(0,0,0,0)
+  );
+
+  background-size: 200% 200%;
+  animation: skillsFlow 25s ease infinite;
+
+  filter: blur(60px);
+}
+
+/* 🌊 SLOW MOVEMENT */
+@keyframes skillsFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* KEEP CONTENT ABOVE */
+#skills > * {
+  position: relative;
+  z-index: 1;
+}
 /* 📦 SECTIONS */
 .section {
   padding: 80px 40px;
@@ -231,16 +335,132 @@ body {
   gap: 20px;
 }
 
-/* 📄 CARDS */
-.card {
-  padding: 20px;
-  border-radius: 12px;
+/* 📦 PROJECT GRID */
+.projects-grid {
+  display: grid;
+  gap: 30px;
+  justify-content: center;
+  justify-items: center; 
+}
+
+/* 💻 Laptop (default) → max 3 cards */
+@media (min-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, minmax(280px, 350px));
+  }
+}
+
+/* 🖥️ Large screens → 4 cards */
+@media (min-width: 1400px) {
+  .projects-grid {
+    grid-template-columns: repeat(4, minmax(280px, 350px));
+  }
+}
+
+/* 📱 Tablet → 2 cards */
+@media (max-width: 1023px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 📱 Mobile → 1 card */
+@media (max-width: 600px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 🪟 CARD */
+.project-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
   background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(200,200,200,0.5);
+  backdrop-filter: blur(10px);
+  transition: 0.4s ease;
+  cursor: pointer;
+}
+
+/* ✨ HOVER LIFT */
+.project-card:hover {
+  transform: translateY(-10px) scale(1.03);
+}
+
+/* 🖼️ IMAGE */
+.project-img {
+  height: 180px;
+  overflow: hidden;
+}
+
+.project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s ease;
+}
+
+/* 🔍 IMAGE ZOOM */
+.project-card:hover img {
+  transform: scale(1.1);
+}
+
+/* 📄 CONTENT */
+.project-content {
+  padding: 20px;
+}
+
+.project-content h3 {
+  margin-bottom: 10px;
+}
+
+.project-content p {
+  color: #9ca3af;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* 🔗 LINK RIGHT ALIGN */
+.project-content a {
+  display: block;
+  text-align: right;
+  color: #a855f7;
+  text-decoration: none;
+  font-size: 14px;
   transition: 0.3s;
 }
 
-.card:hover {
-  transform: translateY(-5px);
+.project-content a:hover {
+  text-decoration: underline;
+}
+
+/* 🟣 GLOW EFFECT */
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: radial-gradient(
+    200px circle at var(--x) var(--y),
+    rgba(168,85,247,0.35),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  border: 1px solid rgba(255, 255, 255, 0.9); /* brighter purple border */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.51); /* glow effect */
+}
+.project-card {
+  transition: transform 0.4s ease, border 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* 📩 CONTACT */
